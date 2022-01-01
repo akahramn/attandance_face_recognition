@@ -1,0 +1,13 @@
+{% if lesson %}
+    <h2>{{ lesson.name }}</h2>
+    <h3>Take Attendance</h3>
+
+    <form action="http://127.0.0.1:8000/attendance/lessons/{{lesson.id}}/takeAttendance" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Take Attendance">
+    </form>
+
+{% else %}
+    <p>No one is here.</p>
+{% endif %}

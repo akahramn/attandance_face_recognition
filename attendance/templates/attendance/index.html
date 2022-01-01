@@ -1,0 +1,9 @@
+{% if attendance_list %}
+    <ul>
+    {% for name in attendance_list %}
+        <li>{{ name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No one is here.</p>
+{% endif %}
