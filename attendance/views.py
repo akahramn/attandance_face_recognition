@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from attendance.models import Instructor, Student, Lesson
 from .face_utils import recognize_faces, take_snap
-import json
+
 
 
 def lesson(request, lesson_id):
@@ -23,10 +23,7 @@ def instructor_home_page(request, instructor_id):
 
 
 def index(request):
-    take_snap()
-    attendance_list = recognize_faces()
-    #students = Student.objects.filter(student_number = 2)
-    #print(students)
+
 
     return render(request, 'attendance/index.html', {'attendance_list': attendance_list})
 
@@ -35,11 +32,10 @@ def take_attendance(request, lesson_id):
     take_snap()
     attendance_list = recognize_faces()
 
-    json_format = json.dumps(attendance_list)
-    print(json_format)
-    print(type(json_format))
+    #json_format = json.dumps(attendance_list)
 
-    return HttpResponseRedirect(reverse('attendance:attendance_list', args=(json_format)))
+
+    return HttpResponseRedirect(reverse('attendance:attendance_list', args=(attendance_list)))
 
 
 def attendance_list(request, json_format):
