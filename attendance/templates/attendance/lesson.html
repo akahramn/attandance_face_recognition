@@ -1,5 +1,6 @@
 {% if lesson %}
     <h2>{{ lesson.name }}</h2>
+    <a href="http://127.0.0.1:8000/attendance/lessons/{{lesson.id}}/attendances"><h3>Devamsızlık Raporu</h3></a>
     <h3>Take Attendance</h3>
 
     <form action="http://127.0.0.1:8000/attendance/lessons/{{lesson.id}}/takeAttendance" method="post">

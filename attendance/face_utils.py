@@ -40,8 +40,8 @@ def recognize_faces():
     known_face_names = [
         "Adem",
         "Hazar",
-        "Abdullah",
-        "Ceren"
+        "Abdullah Kahraman",
+        "Ceren Gülmez"
     ]
 
     matches = face_recognition.compare_faces(known_faces, unknown_face_encoding)
