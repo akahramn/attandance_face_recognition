@@ -1,0 +1,36 @@
+{% extends "attendance/base.html" %}
+
+{% block body %}
+
+    {% if lesson %}
+        <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body rounded border border-warning card text-white bg-dark mb-3">
+        <h5 class="card-title">Yoklama Alınız</h5>
+        <p class="card-text">{{ lesson.name }} dersinde yoklama alabilmek için aşağıda bulunan "Yoklama Al" butonuna tıklayınız.</p>
+          <form action="http://127.0.0.1:8000/attendance/lessons/{{lesson.id}}/takeAttendance" method="post">
+        {% csrf_token %}
+        <input class="" type="submit" value="Yoklama Al">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body rounded border border-warning card text-white bg-dark mb-3">
+        <h5 class="card-title">Devamsızlık Raporu</h5>
+        <p class="card-text">{{ lesson.name }} dersinde bulunan yoklama raporlarını görüntülemek için lütfen aşağıdaki butona tıklayızınız.</p>
+        <a href="http://127.0.0.1:8000/attendance/lessons/{{lesson.id}}/attendances" class="btn btn-primary">Devamsızlık Raporu</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% if alert_flag %}
+   <div class="alert alert-success" role="alert">
+        Yoklama Başarı İle Alındı.
+    </div>
+{% endif %}
+
+{% endblock %}

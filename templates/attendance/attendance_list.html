@@ -1,0 +1,34 @@
+{% extends "attendance/base.html" %}
+{% block body %}
+
+{% if attendance %}
+    <h2>Akademik Personel: {{ attendance.instructor }}</h2>
+
+{% if students %}
+    <h2>Derse Katılan Öğrenci Sayısı: {{ students.count }}</h2>
+    <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Öğrenci Adı</th>
+      <th scope="col">Öğrenci Numarası</th>
+      <th scope="col">Yoklama Saati</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
+      <tr>
+      <th scope="row">-></th>
+      <td>{{ student }}</td>
+      <td>{{student.student_number}}</td>
+      <td>{{ attendance.lesson_date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+    <p>No one is here.</p>
+{% endif %}
+{% endif %}
+{% endblock %}

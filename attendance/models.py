@@ -1,16 +1,21 @@
 import datetime
 from django.db import models
-from jsonfield import JSONField
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
 
 
 class Instructor(models.Model):
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+    email = models.EmailField()
     name_lastname = models.CharField(max_length=50)
     instructor_number = models.IntegerField()
 
     def __str__(self):
         return self.name_lastname
+
 
 
 class Student(models.Model):

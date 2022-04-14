@@ -1,0 +1,33 @@
+{% extends "attendance/base.html" %}
+{% block body %}
+
+    {% if attendances %}
+<br>
+
+    <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Ders Adı</th>
+      <th scope="col">Yoklama Tarihi</th>
+      <th scope="col">Sınıf Mevcudu</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for attendance in attendances %}
+    <tr>
+      <th scope="row">-></th>
+      <td><a href="http://127.0.0.1:8000/attendance/lessons/attendances/{{ attendance.id }}" class="link-danger">{{ attendance }}</a></td>
+      <td>{{attendance.lesson_date}}</td>
+      <td>{{ attendance.lesson.students.count }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    {% else %}
+        <p>Lütfen Yoklama Alınız!</p>
+
+{% endif %}
+
+{% endblock %}
+
